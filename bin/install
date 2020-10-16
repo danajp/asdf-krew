@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+platform() {
+  uname | tr '[:upper:]' '[:lower:]'
+}
+
+arch() {
+  uname -m | sed -e 's/x86_64/amd64/' -e 's/arm.*$/arm/'
+}
+
+mkdir -p "$ASDF_INSTALL_PATH/bin"
+cp "$ASDF_DOWNLOAD_PATH/krew-$(platform)_$(arch)" "$ASDF_INSTALL_PATH/bin/kubectl-krew"
