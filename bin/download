@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+url() {
+  local version
+
+  version="$1"
+
+  echo "https://github.com/kubernetes-sigs/krew/releases/download/$version/krew.tar.gz"
+}
+
+curl -sL "$(url "$ASDF_INSTALL_VERSION")" > "$ASDF_DOWNLOAD_PATH/krew.tar.gz"
+
+(
+  cd "$ASDF_DOWNLOAD_PATH"
+  tar -zxpf krew.tar.gz
+)
