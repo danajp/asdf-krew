@@ -7,7 +7,7 @@ url() {
 
   version="$1"
 
-  echo "https://github.com/kubernetes-sigs/krew/releases/download/$version/krew.tar.gz"
+  echo "https://github.com/kubernetes-sigs/krew/releases/download/v$version/krew.tar.gz"
 }
 
 curl -sL "$(url "$ASDF_INSTALL_VERSION")" > "$ASDF_DOWNLOAD_PATH/krew.tar.gz"
